@@ -42,3 +42,6 @@ bazel-multi-microservice-gradle/external/
 # Ignore local env files
 .env
 .env.local
+
+
+
