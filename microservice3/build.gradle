@@ -28,3 +28,9 @@ test {
 bootJar {
     archiveFileName = 'microservice3.jar'
 }
+tasks.withType(JavaCompile) {
+    doFirst {
+        println "Delaying 10 seconds before compiling..."
+        sleep(10000)
+    }
+}

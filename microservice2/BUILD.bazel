@@ -2,7 +2,7 @@
 genrule(
     name = "slow_step",
     outs = ["dummy.txt"],
-    cmd = "sleep 5 && echo 'Done' > $@",
+    cmd = "sleep 10 && echo 'Done' > $@",
 )
 java_binary(
     name = "Microservice2Application",

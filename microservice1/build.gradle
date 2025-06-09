@@ -32,3 +32,9 @@ tasks.named('compileJava') {
         println "🔥 BUILDING Microservice1 at ${new Date()}"
     }
 }
+tasks.withType(JavaCompile) {
+    doFirst {
+        println "Delaying 10 seconds before compiling..."
+        sleep(10000)
+    }
+}

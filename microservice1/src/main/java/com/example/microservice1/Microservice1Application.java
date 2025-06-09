@@ -39,4 +39,9 @@ public class Microservice1Application {
     public String pingpong() {
         return "pong";
     }
+
+    @GetMapping("/microservice1/pingpong22")
+    public String pingpongaaa() {
+        return "pong";
+    }
 }
