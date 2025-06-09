@@ -18,9 +18,23 @@ public class Microservice3Controller {
         return "Microservice 3 received: " + body.toString();
     }
 
-    @GetMapping("/hello1")
-    public String getHello1() {
+    @GetMapping("/hello2")
+    public String getHello2() {
         return "Hello from Microservice 3";
     }
 
+    @GetMapping("/hello3")
+    public String getHello3() {
+        return "Hello from Microservice 3";
+    }
+
+    @GetMapping("/hello4")
+    public String getHello15() {
+        return "Hello from Microservice 3";
+    }
+
+    @GetMapping("/hello5")
+    public String getHello1() {
+        return "Hello from Microservice 3";
+    }
 }
