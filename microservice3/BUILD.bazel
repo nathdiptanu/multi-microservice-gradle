@@ -1,3 +1,10 @@
+genrule(
+    name = "slow_step",
+    outs = ["dummy.txt"],
+    cmd = "sleep 15 && echo 'Done' > $@",
+
+)
+
 java_binary(
     name = "Microservice3Application",
     srcs = glob(["src/main/java/**/*.java"]),
@@ -12,6 +19,7 @@ java_binary(
         "@maven//:jakarta_annotation_jakarta_annotation_api",
         "@maven//:com_fasterxml_jackson_core_jackson_databind",
     ],
+    data = [":slow_step"],
 )
 
 
