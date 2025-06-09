@@ -1,0 +1,21 @@
+module(
+    name = "multi-microservice-gradle",
+    version = "0.1.0",
+)
+
+bazel_dep(name = "rules_jvm_external", version = "6.3")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "org.springframework.boot:spring-boot-starter-web:3.1.0",
+        "org.springframework.boot:spring-boot:3.1.0",
+        "org.springframework.boot:spring-boot-autoconfigure:3.1.0",
+        "org.springframework:spring-web:6.0.10",
+        "org.springframework:spring-context:6.0.10",
+        "jakarta.annotation:jakarta.annotation-api:2.1.1",
+        "com.fasterxml.jackson.core:jackson-databind:2.15.2",
+    ],
+    repositories = ["https://repo1.maven.org/maven2"],
+)
+use_repo(maven, "maven")

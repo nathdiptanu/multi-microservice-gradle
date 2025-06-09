@@ -1,0 +1,35 @@
+plugins {
+    id 'base'
+}
+apply from: 'docker.gradle'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'application'
+
+    group = 'com.example'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+task runAll {
+    dependsOn ':microservice1:run', ':microservice2:run', ':microservice3:run'
+}
+
+task testAll {
+    dependsOn ':microservice1:test', ':microservice2:test', ':microservice3:test'
+}
+task bootJarAll {
+    dependsOn ':microservice1:bootJar', ':microservice2:bootJar', ':microservice3:bootJar'
+}

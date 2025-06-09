@@ -1,0 +1,44 @@
+# Ignore Java class files
+*.class
+
+# Ignore JARs and WARs
+*.jar
+*.war
+*.ear
+
+# Bazel output dirs (including external workspace)
+bazel-*/
+external/
+
+# Or more specifically:
+bazel-bin/
+bazel-out/
+bazel-testlogs/
+bazel-multi-microservice-gradle/external/
+
+# Bazel user cache
+~/.cache/bazel/
+.cache/
+
+# Ignore Gradle build output
+**/build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar  # Keep the wrapper JAR
+
+# Ignore IntelliJ / Eclipse / VSCode IDE files
+*.iml
+.idea/
+.vscode/
+*.classpath
+*.project
+*.settings/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.DS_Store
+
+# Ignore local env files
+.env
+.env.local

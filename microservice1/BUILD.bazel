@@ -1,0 +1,32 @@
+genrule(
+    name = "slow_step",
+    outs = ["dummy.txt"],
+    cmd = "sleep 10 && echo 'Done' > $@",
+
+)
+
+java_binary(
+    name = "Microservice1Application",
+    srcs = glob(["src/main/java/**/*.java"]),
+    resources = glob(["src/main/resources/**"]),
+    main_class = "com.example.microservice1.Microservice1Application",
+    deps = [
+        "@maven//:org_springframework_boot_spring_boot_starter_web",
+        "@maven//:org_springframework_boot_spring_boot",
+        "@maven//:org_springframework_boot_spring_boot_autoconfigure",
+        "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:jakarta_annotation_jakarta_annotation_api",
+        "@maven//:com_fasterxml_jackson_core_jackson_databind",
+    ],
+      data = [":slow_step"],  # 👈 Force the genrule to run as part of the java_binary
+)
+java_test(
+    name = "Microservice1ApplicationTests",
+    srcs = glob(["src/test/java/**/*.java"]),
+    deps = [
+        ":Microservice1Application",
+        # Add test dependencies
+    ],
+
+)

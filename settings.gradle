@@ -1,0 +1,4 @@
+rootProject.name = 'multi-microservice-gradle'
+include 'microservice1', 'microservice2', 'microservice3'
+include 'microservice1'
+

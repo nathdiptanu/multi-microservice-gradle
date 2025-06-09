@@ -1,0 +1,19 @@
+ext.services = [
+        microservice1: 8091,
+        microservice2: 8082,
+        microservice3: 8083
+]
+
+ext.services.each { service, port ->    // <-- use ext.services here
+    def capitalized = service.capitalize()
+
+    tasks.register("dockerBuild${capitalized}", Exec) {
+        dependsOn ":${service}:bootJar"
+        workingDir "${projectDir}/${service}"
+        commandLine 'docker', 'build', '-t', "${service}:latest", '.'
+    }
+
+    tasks.register("dockerRun${capitalized}", Exec) {
+        commandLine 'docker', 'run', '-d', '-p', "${port}:8080", "${service}:latest"
+    }
+}
